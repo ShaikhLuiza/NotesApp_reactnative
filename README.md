@@ -1,97 +1,390 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 📝 React Native Notes App
 
-# Getting Started
+A simple and professional **Notes CRUD application** built with **React Native CLI (without Expo)** and **AsyncStorage**.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+The app allows users to create, view, edit, delete, and search notes. All notes are stored locally on the device, so no backend or database server is required.
 
-## Step 1: Start Metro
+---
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## ✨ Features
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+* 📝 Create notes
+* 👀 View saved notes
+* ✏️ Edit existing notes
+* 🗑️ Delete notes
+* 🔍 Search notes
+* 💾 Local data persistence with AsyncStorage
+* 📱 React Native CLI — no Expo
+* 🎨 Professional light-theme UI
+* 🖼️ Online background image
+* 📦 TypeScript support
+* ⚡ Fast and lightweight
 
-```sh
-# Using npm
+---
+
+## 📱 Screenshots
+
+Add your screenshots here after running the application.
+
+```text
+screenshots/
+├── home.png
+├── create-note.png
+├── edit-note.png
+└── search.png
+```
+
+Example:
+
+```markdown
+![Home Screen](screenshots/home.png)
+```
+
+---
+
+## 🛠️ Technologies Used
+
+| Technology   | Purpose                        |
+| ------------ | ------------------------------ |
+| React Native | Mobile application framework   |
+| TypeScript   | Type-safe JavaScript           |
+| AsyncStorage | Local data storage             |
+| React Hooks  | State and lifecycle management |
+| FlatList     | Efficient note list rendering  |
+
+---
+
+## 📂 Project Structure
+
+```text
+NotesApp/
+│
+├── android/
+├── ios/
+├── node_modules/
+│
+├── App.tsx
+├── package.json
+├── tsconfig.json
+├── babel.config.js
+├── metro.config.js
+├── .gitignore
+└── README.md
+```
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/notes-app.git
+```
+
+Go inside the project:
+
+```bash
+cd notes-app
+```
+
+---
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+---
+
+### 3. Install AsyncStorage
+
+```bash
+npm install @react-native-async-storage/async-storage
+```
+
+---
+
+### 4. Start Metro
+
+```bash
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Build and run your app
+---
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+### 5. Run on Android
 
-### Android
+Open another terminal:
 
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```bash
+npx react-native run-android
 ```
 
-### iOS
+Make sure an Android emulator is running or a physical Android device is connected with USB debugging enabled.
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+---
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+## 💾 How Local Storage Works
 
-```sh
-bundle install
+This project uses **AsyncStorage** to store notes locally on the device.
+
+The storage key is:
+
+```tsx
+const STORAGE_KEY = '@professional_notes';
 ```
 
-Then, and every time you update your native dependencies, run:
+When notes are saved, they are converted into JSON:
 
-```sh
-bundle exec pod install
+```tsx
+await AsyncStorage.setItem(
+  STORAGE_KEY,
+  JSON.stringify(updatedNotes)
+);
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+When the application starts, the stored data is retrieved:
 
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+```tsx
+const savedNotes =
+  await AsyncStorage.getItem(STORAGE_KEY);
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+Then it is converted back into a JavaScript array:
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```tsx
+JSON.parse(savedNotes);
+```
 
-## Step 3: Modify your app
+The basic flow is:
 
-Now that you have successfully run the app, let's make changes!
+```text
+User creates note
+       ↓
+JavaScript object
+       ↓
+JSON.stringify()
+       ↓
+AsyncStorage
+       ↓
+Phone's private app storage
+```
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+---
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+## 🔄 CRUD Operations
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+This application demonstrates all four basic CRUD operations.
 
-## Congratulations! :tada:
+### Create
 
-You've successfully run and modified your React Native App. :partying_face:
+Users can create a new note by entering:
 
-### Now what?
+* Title
+* Description
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+```tsx
+const newNote: Note = {
+  id: Date.now().toString(),
+  title: title.trim(),
+  description: description.trim(),
+};
+```
 
-# Troubleshooting
+### Read
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+Notes are loaded from AsyncStorage when the application starts:
 
-# Learn More
+```tsx
+useEffect(() => {
+  loadNotes();
+}, []);
+```
 
-To learn more about React Native, take a look at the following resources:
+### Update
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Users can select a note and modify its title or description.
+
+```tsx
+const updatedNotes = notes.map(note =>
+  note.id === editingId
+    ? {
+        ...note,
+        title: title.trim(),
+        description: description.trim(),
+      }
+    : note,
+);
+```
+
+### Delete
+
+A note can be removed from the list:
+
+```tsx
+const updatedNotes = notes.filter(
+  note => note.id !== id,
+);
+```
+
+---
+
+## 🔎 Search
+
+The application includes a search feature that searches through both the note title and description.
+
+```tsx
+const filteredNotes = notes.filter(note =>
+  `${note.title} ${note.description}`
+    .toLowerCase()
+    .includes(search.toLowerCase()),
+);
+```
+
+---
+
+## 🎨 UI Design
+
+The application uses a clean, modern light interface.
+
+### Design Elements
+
+* Soft background image
+* White cards
+* Rounded corners
+* Subtle shadows
+* Purple primary action color
+* Minimal typography
+* Clean input fields
+* Responsive layout
+* Mobile-friendly spacing
+
+---
+
+## 🖼️ Background Image
+
+The application uses an online Unsplash image as the background.
+
+For production applications, it is recommended to download the image and include it as a local asset instead of relying on an external URL.
+
+For example:
+
+```text
+assets/
+└── images/
+    └── notes-background.jpg
+```
+
+Then:
+
+```tsx
+<ImageBackground
+  source={require('./assets/images/notes-background.jpg')}
+  style={styles.background}
+>
+```
+
+---
+
+## 📦 Dependencies
+
+Main dependency:
+
+```bash
+npm install @react-native-async-storage/async-storage
+```
+
+The project otherwise uses React Native's built-in components such as:
+
+* `FlatList`
+* `TextInput`
+* `Pressable`
+* `ImageBackground`
+* `KeyboardAvoidingView`
+* `SafeAreaView`
+
+---
+
+## 🔐 Data & Privacy
+
+This application does **not use a backend**.
+
+Notes are stored locally using AsyncStorage.
+
+```text
+Phone
+  │
+  └── Your Notes App
+        │
+        └── AsyncStorage
+              │
+              └── Local app storage
+```
+
+Your notes are not automatically uploaded to a server.
+
+> **Note:** Uninstalling the application will normally remove its private local storage, including the stored notes.
+
+---
+
+## 🧪 Future Improvements
+
+Possible improvements for future versions:
+
+* [ ] Add note categories
+* [ ] Add favorite notes
+* [ ] Add note colors
+* [ ] Add dark mode
+* [ ] Add date and time
+* [ ] Add note details screen
+* [ ] Add React Navigation
+* [ ] Add animations
+* [ ] Add authentication
+* [ ] Replace AsyncStorage with SQLite
+* [ ] Add cloud synchronization
+* [ ] Add export/import notes
+* [ ] Generate Android APK
+
+---
+
+## 📚 What I Learned
+
+This project is useful for learning:
+
+* React Native fundamentals
+* TypeScript
+* Functional components
+* `useState`
+* `useEffect`
+* `useMemo`
+* CRUD operations
+* Local storage
+* AsyncStorage
+* JSON serialization
+* `FlatList`
+* Form handling
+* Search/filtering
+* Android application development
+* Professional mobile UI design
+
+---
+
+## 📄 License
+
+This project is available for educational and personal use.
+
+---
+
+## ⭐ Support
+
+If you found this project useful, consider giving the repository a ⭐ on GitHub.
+
+---
+
+### 👩‍💻 Author
+
+**Your Name**
+
+Built with ❤️ using React Native.
