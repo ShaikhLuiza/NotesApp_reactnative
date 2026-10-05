@@ -24,14 +24,11 @@ The app allows users to create, view, edit, delete, and search notes. All notes 
 
 ## 📱 Screenshots
 
-  <img src="https://github.com/user-attachments/assets/23ce225d-35fc-4252-afbf-6ba2df1da30f" width="250" />
-  <img src="https://github.com/user-attachments/assets/09b95d4c-95fe-4fa8-8b63-c81ead6bee4e" width="250" />
-  <img src="https://github.com/user-attachments/assets/1b4129d6-7f77-43b5-a83c-d68b4b59bd62" width="250" />
-   <img src="https://github.com/user-attachments/assets/3d53b03c-ce7d-4caa-be42-e09f0dfa8314" width="250" />
-  <img src="https://github.com/user-attachments/assets/9753bf5a-e877-43b5-819a-3f60a7d7f761" width="250" />
-  <img src="https://github.com/user-attachments/assets/06c593a8-094a-4e46-94ca-88154bccd5cb" width="250" />
+ <p align="center"> <img src="https://github.com/user-attachments/assets/23ce225d-35fc-4252-afbf-6ba2df1da30f" width="250" /> <img src="https://github.com/user-attachments/assets/09b95d4c-95fe-4fa8-8b63-c81ead6bee4e" width="250" /> <img src="https://github.com/user-attachments/assets/1b4129d6-7f77-43b5-a83c-d68b4b59bd62" width="250" />  <img src="https://github.com/user-attachments/assets/3d53b03c-ce7d-4caa-be42-e09f0dfa8314" width="250" /></p>
 
-
+<p align="center"> 
+  <img src="https://github.com/user-attachments/assets/9753bf5a-e877-43b5-819a-3f60a7d7f761" width="250" /> <img src="https://github.com/user-attachments/assets/06c593a8-094a-4e46-94ca-88154bccd5cb" width="250" />
+</p>
 
 
 
