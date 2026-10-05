@@ -368,23 +368,3 @@ This project is useful for learning:
 * Search/filtering
 * Android application development
 * Professional mobile UI design
-
----
-
-## 📄 License
-
-This project is available for educational and personal use.
-
----
-
-## ⭐ Support
-
-If you found this project useful, consider giving the repository a ⭐ on GitHub.
-
----
-
-### 👩‍💻 Author
-
-**Your Name**
-
-Built with ❤️ using React Native.
