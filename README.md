@@ -23,9 +23,17 @@ The app allows users to create, view, edit, delete, and search notes. All notes 
 ---
 
 ## 📱 Screenshots
-<img width="720" height="1600" alt="WhatsApp Image 2026-10-05 at 5 05 26 PM" src="https://github.com/user-attachments/assets/23ce225d-35fc-4252-afbf-6ba2df1da30f" /><img width="720" height="1600" alt="WhatsApp Image 2026-10-05 at 5 05 26 PM (1)" src="https://github.com/user-attachments/assets/09b95d4c-95fe-4fa0-8b63-c81ead6bee4e" /><img width="720" height="1600" alt="WhatsApp Image 2026-10-05 at 5 05 27 PM" src="https://github.com/user-attachments/assets/1b4129d6-7f77-43b5-a83c-d68b4b59bd62" />
-<img width="720" height="1600" alt="WhatsApp Image 2026-10-05 at 5 05 27 PM (1)" src="https://github.com/user-attachments/assets/3d53b03c-ce7d-4caa-be42-e09f0dfa8314" /><img width="720" height="1600" alt="WhatsApp Image 2026-10-05 at 5 05 27 PM (2)" src="https://github.com/user-attachments/assets/9753bf5a-e877-43b5-819a-3f60a7d7f761" /><img width="720" height="1600" alt="WhatsApp Image 2026-10-05 at 5 05 28 PM" src="https://github.com/user-attachments/assets/06c593a8-094a-4e46-94ca-88154bccd5cb" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/23ce225d-35fc-4252-afbf-6ba2df1da30f" width="250" />
+  <img src="https://github.com/user-attachments/assets/09b95d4c-95fe-4fa8-8b63-c81ead6bee4e" width="250" />
+  <img src="https://github.com/user-attachments/assets/1b4129d6-7f77-43b5-a83c-d68b4b59bd62" width="250" />
+</p>
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3d53b03c-ce7d-4caa-be42-e09f0dfa8314" width="250" />
+  <img src="https://github.com/user-attachments/assets/9753bf5a-e877-43b5-819a-3f60a7d7f761" width="250" />
+  <img src="https://github.com/user-attachments/assets/06c593a8-094a-4e46-94ca-88154bccd5cb" width="250" />
+</p>
 
 
 
